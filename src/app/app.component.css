@@ -2,6 +2,11 @@ md-sidenav-layout.m2app-dark {
   background: black;
 }
 
+a:focus, a:hover {
+    color: white !important;
+    text-decoration: none !important;
+}
+
 .app-content {
   padding: 20px;
 }

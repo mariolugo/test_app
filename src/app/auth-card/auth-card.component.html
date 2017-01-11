@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+
+      <div class="col-md-6 col-md-offset-3">
+        <md-card [ngSwitch]="value">
+          <app-login *ngSwitchCase="'login'"></app-login>
+          <app-sign-up *ngSwitchCase="'signup'"></app-sign-up>
+          <div class="form-group text-center">
+            <a (click)="value='signup'" *ngSwitchCase="'login'">Create an account</a>
+            <a (click)="value='login'" *ngSwitchCase="'signup'">Back to login</a>
+          </div>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</div>

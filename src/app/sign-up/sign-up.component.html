@@ -1,0 +1,15 @@
+<md-card-title>
+  Sign up!
+</md-card-title>
+<form [formGroup]="signUp" (ngSubmit)="createUser(signUp.value, signUp.valid)">
+  <md-input-container>
+    <input md-input placeholder="Email" formControlName="email">
+  </md-input-container>
+  <small>* Must be a valid email</small>
+  <md-input-container>
+    <input md-input placeholder="Password" type="password" formControlName="password">
+  </md-input-container>
+  <small>* Password must be 6 characters minimum</small>
+  <md-checkbox [(ngModel)]="admin" [ngModelOptions]="{standalone: true}">Want to be admin?</md-checkbox>
+  <button type="submit" [disabled]="!signUp.valid" md-raised-button>Sign Up</button>
+</form>
