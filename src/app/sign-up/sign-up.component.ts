@@ -43,7 +43,8 @@ export class SignUpComponent implements OnInit {
     console.log(data);
     this.authService.signUp(data)
     .then(res=>{
-      this.router.navigate(['']);
+      console.log('res',res);
+      this.router.navigate(['/login']);
     })
     .catch(err=>{
       this.openSnackBar(err.message);

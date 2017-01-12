@@ -9,7 +9,7 @@
     <md-card>
       <md-card-header>
         <md-input-container>
-          <input md-input placeholder="Search user" [(ngModel)]="search">
+          <input md-input placeholder="Search user by email" [(ngModel)]="search">
         </md-input-container>
       </md-card-header>
       <md-card-content>
@@ -33,10 +33,10 @@
                 <md-icon md-list-avatar *ngIf="user.admin === '1'">check</md-icon>
               </td>
               <td class="buttons">
-                <button md-button (click)="showEdit(i,0)"> <md-icon md-list-avatar>accessibility</md-icon></button>
-                <button md-button (click)="showEdit(i,1)"> <md-icon md-list-avatar>email</md-icon></button>
-                <button md-button (click)="showEdit(i,2)"> <md-icon md-list-avatar>lock</md-icon></button>
-                <button md-button (click)="deleteUser(user.id)"> <md-icon md-list-avatar>delete</md-icon></button>
+                <button md-button (click)="showEdit(i,0)" mdTooltip="Change Privileges" [mdTooltipPosition]="'above'"> <md-icon md-list-avatar>accessibility</md-icon></button>
+                <button md-button (click)="showEdit(i,1)" mdTooltip="Change Email" [mdTooltipPosition]="'above'"> <md-icon md-list-avatar>email</md-icon></button>
+                <button md-button (click)="showEdit(i,2)" mdTooltip="Change Password" [mdTooltipPosition]="'above'"> <md-icon md-list-avatar>lock</md-icon></button>
+                <button md-button (click)="deleteUser(user.id)" mdTooltip="Delete User" [mdTooltipPosition]="'above'"> <md-icon md-list-avatar>delete</md-icon></button>
               </td>
             </tr>
           </tbody>

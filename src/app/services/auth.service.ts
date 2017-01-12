@@ -20,6 +20,7 @@ export class Auth {
       .subscribe(res=>{
         if(res.token){
           window.localStorage.setItem('id_token',res.token);
+          window.localStorage.setItem('id_user',res.user.id);
           //window.localStorage.setItem('session',JSON.stringify(res.json().user));
           //this.setUserData(res.json().user);
         }
@@ -35,9 +36,7 @@ export class Auth {
       this.http.post(`${this.config.baseUrl}auth/signup`,credentials)
       .map(x => x.json())
       .subscribe(res=>{
-        if(res.code === 'CREATED'){
-          window.localStorage.setItem('id_token',res.data.token);
-        }
+        console.log('ress',res);
         resolve(res);
       }, err =>{
         reject(err.json());
@@ -50,7 +49,6 @@ export class Auth {
       this.http.put(`${this.config.baseUrl}user/${id}`,data)
       .subscribe(res=>{
         console.log('s',res.json());
-        window.localStorage.setItem('session',JSON.stringify(res.json()));
         resolve(res.json());
       }, err =>{
         reject(err);

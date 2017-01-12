@@ -104,7 +104,6 @@ export class UserListComponent implements OnInit {
         password: data.password
       };
     }
-
     console.log('user', user);
     this.userSrv.editUser(id, user)
       .then(res => {

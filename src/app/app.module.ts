@@ -10,6 +10,7 @@ import { HttpClient } from './core/http-client';
 import { routing,routedComponents } from './app.routes';
 import {UserData} from './core/user-data';
 import { UserService } from './services/user.service';
+import { ProductService } from './services/product.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -26,6 +27,7 @@ import { CreateUserDialogComponent } from './create-user-dialog/create-user-dial
 import { CustomEmailFilterPipe } from './pipes/custom-email-filter.pipe';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { ProductPanelComponent } from './product-panel/product-panel.component';
+import { CreateProductDialogComponent } from './create-product-dialog/create-product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +46,13 @@ import { ProductPanelComponent } from './product-panel/product-panel.component';
     CreateUserDialogComponent,
     CustomEmailFilterPipe,
     EditUserDialogComponent,
-    ProductPanelComponent
+    ProductPanelComponent,
+    CreateProductDialogComponent
   ],
   entryComponents: [
     CreateUserDialogComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    CreateProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,8 @@ import { ProductPanelComponent } from './product-panel/product-panel.component';
     HttpClient,
     Config,
     UserData,
-    UserService
+    UserService,
+    ProductService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

@@ -1,0 +1,15 @@
+md-input-container, md-checkbox {
+    display: block;
+}
+
+button {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+small {
+    color: #cdcdcd;
+    font-size: 10px;
+    position: relative;
+    bottom: 10px;
+}

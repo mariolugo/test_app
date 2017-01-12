@@ -1,0 +1,18 @@
+<h1 md-dialog-title>New Product</h1>
+<div md-dialog-content>
+  <form [formGroup]="newUser" (ngSubmit)="createUser(newUser.value, newUser.valid)">
+  <md-input-container>
+    <input md-input placeholder="Title" type="text" formControlName="title">
+  </md-input-container>
+  <small>* Must be a valid email</small>
+  <md-input-container>
+    <textarea md-input placeholder="Description" formControlName="description"></textarea>
+  </md-input-container>
+  <small>* Password must be 6 characters minimum</small>
+  <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." formControlName="file"/>
+</form>
+</div>
+<div md-dialog-actions>
+  <button (click)="createProduct(newUser.value, newUser.valid)" [disabled]="!newUser.valid && !buttonEnabled" md-raised-button>Create</button>
+  <button md-button (click)="dialogRef.close('Option 2')">Close</button>
+</div>
