@@ -1,0 +1,80 @@
+<div class="page-header">
+  <h1 *ngIf="!editing">User List</h1>
+  <h1 *ngIf="editType === 0">Edit User Privileges</h1>
+  <h1 *ngIf="editType === 1">Edit User Email</h1>
+  <h1 *ngIf="editType === 2">Edit User Password</h1>
+</div>
+<md-tab-group *ngIf="!editing">
+  <md-tab label="All Users" >
+    <md-card>
+      <md-card-header>
+        <md-input-container>
+          <input md-input placeholder="Search user" [(ngModel)]="search">
+        </md-input-container>
+      </md-card-header>
+      <md-card-content>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Email</th>
+              <th>Admin</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userList | searchPipe:'email':search; let i = index">
+              <th scope="row">
+                <md-icon md-list-avatar>person</md-icon>
+              </th>
+              <td>{{user.email}}</td>
+              <td>
+                <md-icon md-list-avatar *ngIf="user.admin === '0'">clear</md-icon>
+                <md-icon md-list-avatar *ngIf="user.admin === '1'">check</md-icon>
+              </td>
+              <td class="buttons">
+                <button md-button (click)="showEdit(i,0)"> <md-icon md-list-avatar>accessibility</md-icon></button>
+                <button md-button (click)="showEdit(i,1)"> <md-icon md-list-avatar>email</md-icon></button>
+                <button md-button (click)="showEdit(i,2)"> <md-icon md-list-avatar>lock</md-icon></button>
+                <button md-button (click)="deleteUser(user.id)"> <md-icon md-list-avatar>delete</md-icon></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </md-card-content>
+    </md-card>
+
+  </md-tab>
+</md-tab-group>
+
+<md-tab-group *ngIf="editing">
+  <md-tab label="Edit user" >
+    <md-card  class="editUser">
+      <md-card-content>
+        <form [formGroup]="editForm" (ngSubmit)="editUser(editForm.value, editForm.valid)">
+          <p  *ngIf="editType === 1">Current: {{userList[userIndex].email}}</p>
+          <md-input-container *ngIf="editType === 1">
+            <input md-input placeholder="Email" formControlName="email" >
+          </md-input-container>
+          <small *ngIf="editType === 1">* Must be a valid email</small>
+          <md-input-container *ngIf="editType === 2">
+            <input md-input placeholder="Password" type="password" formControlName="password">
+          </md-input-container >
+          <small *ngIf="editType === 2">* Password must be 6 characters minimum</small>
+          <md-checkbox [(ngModel)]="admin" [ngModelOptions]="{standalone: true}" *ngIf="editType === 0">User admin privileges</md-checkbox>
+        </form>
+      </md-card-content>
+      <md-card-actions>
+        <button (click)="editUser(userList[userIndex].id,editForm.value,editType)" [disabled]="!buttonEnabled" md-raised-button *ngIf="editType === 0">Update</button>
+        <button (click)="editUser(userList[userIndex].id,editForm.value,editType)" [disabled]="!editForm.valid" md-raised-button *ngIf="editType === 1">Update</button>
+        <button (click)="editUser(userList[userIndex].id,editForm.value,editType)" [disabled]="!editForm.valid" md-raised-button *ngIf="editType === 2">Update</button>
+        <button md-button (click)="goBack()">Back</button>
+      </md-card-actions>
+      
+    </md-card>
+
+  </md-tab>
+</md-tab-group>
+<span class="app-action">
+  <button md-fab (click)="openDialog()"><md-icon>add</md-icon></button>
+</span>

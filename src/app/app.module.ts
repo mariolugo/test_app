@@ -9,6 +9,7 @@ import { Config } from './core/config';
 import { HttpClient } from './core/http-client';
 import { routing,routedComponents } from './app.routes';
 import {UserData} from './core/user-data';
+import { UserService } from './services/user.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +19,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthCardComponent } from './auth-card/auth-card.component';
 import { EqualValidatorDirective } from './equal-validator.directive';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { RealTimeComponent } from './real-time/real-time.component';
+import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
+import { CustomEmailFilterPipe } from './pipes/custom-email-filter.pipe';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,17 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     SignUpComponent,
     AuthCardComponent,
     EqualValidatorDirective,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UserListComponent,
+    ProductListComponent,
+    RealTimeComponent,
+    CreateUserDialogComponent,
+    CustomEmailFilterPipe,
+    EditUserDialogComponent
+  ],
+  entryComponents: [
+    CreateUserDialogComponent,
+    EditUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +61,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AuthGuard,
     HttpClient,
     Config,
-    UserData
+    UserData,
+    UserService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

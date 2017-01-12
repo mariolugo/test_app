@@ -30,4 +30,10 @@ export class HttpClient {
             headers: this.headers
         });
     }
+
+    delete(url) {
+        return this.http.delete(url, {
+            headers: this.headers
+        });
+    }
 }

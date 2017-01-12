@@ -1,0 +1,19 @@
+<h1 md-dialog-title>Create user</h1>
+<div md-dialog-content>
+  <form [formGroup]="newUser" (ngSubmit)="createUser(newUser.value, newUser.valid)">
+  <md-input-container>
+    <input md-input placeholder="Email" formControlName="email">
+  </md-input-container>
+  <small>* Must be a valid email</small>
+  <md-input-container>
+    <input md-input placeholder="Password" type="password" formControlName="password">
+  </md-input-container>
+  <small>* Password must be 6 characters minimum</small>
+  <md-checkbox [(ngModel)]="admin" [ngModelOptions]="{standalone: true}">User will be admin?</md-checkbox>
+  
+</form>
+</div>
+<div md-dialog-actions>
+  <button (click)="createUser(newUser.value, newUser.valid)" [disabled]="!newUser.valid" md-raised-button>Create</button>
+  <button md-button (click)="dialogRef.close('Option 2')">Close</button>
+</div>

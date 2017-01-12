@@ -1,0 +1,53 @@
+.page-header{
+    margin:0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #FF9100;
+}
+
+.page-header h1{
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+    padding: 50px;
+    color: white;
+}
+
+md-tab-group{
+    margin: 50px 70px;
+}
+
+.buttons {
+    padding: 2px !important;
+}
+
+md-card {
+    margin-top: 10px;
+}
+
+.app-action {
+  display: inline-block;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+}
+
+.editUser md-input-container, .editUser md-checkbox {
+    display: block;
+}
+
+.editUser button {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.editUser small {
+    color: #cdcdcd;
+    font-size: 10px;
+    position: relative;
+    bottom: 10px;
+}
