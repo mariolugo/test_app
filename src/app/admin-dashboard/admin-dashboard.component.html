@@ -15,5 +15,6 @@
   </md-sidenav>
   <div class="md-sidenav-content" [ngSwitch]="value">
     <app-user-list *ngSwitchCase="'users'"></app-user-list>
+    <app-product-panel *ngSwitchCase="'products'"></app-product-panel>
   </div>
 </md-sidenav-container>

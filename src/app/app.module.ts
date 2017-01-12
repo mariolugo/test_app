@@ -25,6 +25,7 @@ import { RealTimeComponent } from './real-time/real-time.component';
 import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
 import { CustomEmailFilterPipe } from './pipes/custom-email-filter.pipe';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { ProductPanelComponent } from './product-panel/product-panel.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
     RealTimeComponent,
     CreateUserDialogComponent,
     CustomEmailFilterPipe,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    ProductPanelComponent
   ],
   entryComponents: [
     CreateUserDialogComponent,
