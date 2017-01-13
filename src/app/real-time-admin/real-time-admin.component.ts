@@ -15,6 +15,7 @@ export class RealTimeAdminComponent implements OnInit {
   packageReady:any =false;
   constructor() { }
 
+  //socket listeners
   ngOnInit() {
     io.socket.on('newPackageInfo',(data)=>{
       this.adminReceived = true;
@@ -31,6 +32,7 @@ export class RealTimeAdminComponent implements OnInit {
     
   }
 
+  //send package info
   sendInfo(info){
     io.socket.request({
       method: 'POST',
@@ -47,6 +49,7 @@ export class RealTimeAdminComponent implements OnInit {
     });
   }
 
+  //send package
   sendPackage(){
     io.socket.request({
       method: 'POST',
@@ -66,6 +69,7 @@ export class RealTimeAdminComponent implements OnInit {
     this.packageReady = false;
   }
 
+  //information received from user
   infoReceived(){
     io.socket.request({
       method: 'POST',

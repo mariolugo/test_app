@@ -5,7 +5,7 @@ import {Users} from '../common/users.interface';
   name: 'searchPipe'
 })
 export class CustomEmailFilterPipe implements PipeTransform {
-
+  //pipe for filterin by email or title
   transform(value, key: string, term: string) {
     return value.filter((item) => {
       if (item.hasOwnProperty(key)) {

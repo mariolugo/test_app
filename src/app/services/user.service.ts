@@ -24,7 +24,9 @@ export class UserService {
         this._users = <BehaviorSubject<Users[]>>new BehaviorSubject([]);
         this.users = this._users.asObservable();
     }
+    //this works with asynchronous arrays
 
+    //create user
     createUser(data) {
         return new Promise((resolve, reject) => {
             this.http.post(`${this.config.baseUrl}user/newUser`, data)
@@ -36,7 +38,8 @@ export class UserService {
                 }, error => reject(error));
         })
     }
-
+    
+    //edit user
     editUser(id,data) {
         console.log('user data',data);
         return new Promise((resolve, reject) => {
@@ -51,6 +54,7 @@ export class UserService {
         })
     }
 
+    //get users
     getUsers() {
         this.http.get(`${this.config.baseUrl}user`)
             .map(response => response.json())
@@ -61,6 +65,7 @@ export class UserService {
             }, error => console.log('Could not load users.'));
     }
 
+    //delete user
     deleteUser(id) {
         return new Promise((resolve, reject) => {
             this.http.delete(`${this.config.baseUrl}user/deleteUser/${id}`)

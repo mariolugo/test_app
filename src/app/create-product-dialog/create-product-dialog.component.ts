@@ -18,6 +18,7 @@ export class CreateProductDialogComponent implements OnInit {
     private formB: FormBuilder,
     private productSrv: ProductService
   ) { 
+    //product form for validation
     this.newUser = formB.group({
       'title': [null, Validators.compose([Validators.required, Validators.nullValidator])],
       'description': [null, Validators.compose([Validators.required, Validators.nullValidator])],
@@ -27,13 +28,13 @@ export class CreateProductDialogComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //new file is in input
   fileChangeEvent(fileInput: any) {
     this.buttonEnabled = true;
     this.filesToUpload = <Array<File>>fileInput.target.files;
     console.log(this.filesToUpload);
   }
-
+  //create product
   createProduct(data,valid){
     console.log(data);
     this.productSrv.createProduct(data,this.filesToUpload)

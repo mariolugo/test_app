@@ -13,6 +13,7 @@ export class AppComponent {
     private authSrv: Auth,
     private router: Router
   ){
+    //if user is logged in, get data from localstorage and save it to the user model
     if (this.authSrv.isLoggedIn()){
       let sessionData = {
         token: window.localStorage.getItem('id_token'),

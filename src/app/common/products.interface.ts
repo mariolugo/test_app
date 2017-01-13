@@ -1,4 +1,4 @@
-// each post will have a title and category
+// product interface
 export interface Products {
     id: string;
     photo: string;

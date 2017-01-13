@@ -1,4 +1,4 @@
-// each post will have a title and category
+// user interface
 export interface Users {
     admin: string;
     createdAt: string;

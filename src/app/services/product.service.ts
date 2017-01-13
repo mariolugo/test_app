@@ -24,7 +24,9 @@ export class ProductService {
     this._products = <BehaviorSubject<Products[]>>new BehaviorSubject([]);
     this.products = this._products.asObservable();
   }
+  //this works with asynchronous arrays
 
+  //create product, first, the photo is uploaded and product created, and then the product is updated with the information
   createProduct(params: any, files: Array<File>) {
     return new Promise((resolve, reject) => {
       this.uploadPhoto(files)
@@ -44,7 +46,7 @@ export class ProductService {
         })
     });
   }
-
+  //upload photo
   uploadPhoto(file: Array<File>) {
     let user = JSON.parse(window.localStorage.getItem('user'));
     let url = `${this.config.baseUrl}product/uploadPhoto/${user.id}`
@@ -67,6 +69,7 @@ export class ProductService {
     });
   }
 
+  //after product is created, product is updated with the title an description
   fillInfo(id,data) {
     return new Promise((resolve, reject) => {
       this.http.put(`${this.config.baseUrl}product/fillProduct/${id}`, data)
@@ -80,6 +83,7 @@ export class ProductService {
     });
   }
 
+  //edit product
   editProduct(id, data) {
     console.log('user data', data);
     return new Promise((resolve, reject) => {
@@ -94,6 +98,7 @@ export class ProductService {
     });
   }
 
+  //get all products
   getProducts() {
     this.http.get(`${this.config.baseUrl}product/allProducts`)
       .map(response => response.json())
@@ -107,6 +112,7 @@ export class ProductService {
       });
   }
 
+  //delete product
   deleteProduct(id) {
     return new Promise((resolve, reject) => {
       this.http.delete(`${this.config.baseUrl}product/deleteProduct/${id}`)

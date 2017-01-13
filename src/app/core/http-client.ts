@@ -17,6 +17,7 @@ export class HttpClient {
         this.options = new RequestOptions({ headers: this.headers });
     }
 
+    //custom get with auth token
     get(url) {
 
         return this.http.get(url, {
@@ -24,18 +25,21 @@ export class HttpClient {
         });
     }
 
+    //custom post with auth token
     post(url, data) {
         return this.http.post(url, data, {
             headers: this.headers
         });
     }
 
+    //custom put with auth token
     put(url, data) {
         return this.http.put(url, data, {
             headers: this.headers
         });
     }
 
+    //custom delete with auth token
     delete(url) {
         return this.http.delete(url, {
             headers: this.headers

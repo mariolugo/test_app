@@ -8,6 +8,7 @@ export class AuthAdminGuard implements CanActivate {
 
   constructor(private auth: Auth, private router: Router) {}
 
+  //user is logged in and checks if user is admin
   canActivate() {
     if (this.auth.isLoggedIn() && this.auth.getUserData().isAdmin() === '0') {
       console.log('not admin');

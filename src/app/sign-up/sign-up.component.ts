@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
     private authService: Auth,
     public snackBar: MdSnackBar
   ) {
+    //user form validation
     this.signUp = formB.group({
       'email': [null, Validators.compose([Validators.required, Validators.pattern('^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$'), Validators.nullValidator])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.nullValidator])],
@@ -27,12 +28,14 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  //open toast message
   openSnackBar(message) {
     this.snackBar.open(message,'CLOSE', {
       duration: 2000,
     })
   }
 
+  //create user
   createUser(data,valid){
     console.log('admin',this.admin);
     if (this.admin){

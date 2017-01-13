@@ -29,12 +29,14 @@ export class ProductPanelComponent implements OnInit {
     private formB: FormBuilder,
     public snackBar: MdSnackBar,
   ) {
+    //form for editing product and validation
     this.editForm = this.formB.group({
       'title': [null, Validators.compose([ Validators.nullValidator])],
       'description': [null, Validators.compose([ Validators.nullValidator])],
     });
   }
 
+  //initializing asynchronous array
   ngOnInit() {
     this.productSrv.getProducts();
     this.products = this.productSrv.products;
@@ -46,12 +48,15 @@ export class ProductPanelComponent implements OnInit {
     });
   }
 
+
+  //open toast message
   openSnackBar(message) {
     this.snackBar.open(message, 'CLOSE', {
       duration: 2000,
     });
   }
 
+  //show edit view
   showEdit(index, type) {
     this.editing = true;
     this.productIndex = index;
@@ -61,6 +66,7 @@ export class ProductPanelComponent implements OnInit {
     }
   }
 
+  //edit product
   editProduct(id,data,type){
     let product;
     let admin;
@@ -87,11 +93,13 @@ export class ProductPanelComponent implements OnInit {
       })
   }
 
+  //hide edit view
   goBack() {
     this.editing = false;
     this.editType = '';
   }
 
+  //delete product
   deleteProduct(id){
     this.productSrv.deleteProduct(id)
     .then(res=>{
@@ -102,6 +110,7 @@ export class ProductPanelComponent implements OnInit {
     })
   }
 
+  //open dialog component to create product
   openDialog() {
     let dialogRef = this.dialog.open(CreateProductDialogComponent);
     dialogRef.afterClosed().subscribe(result => {

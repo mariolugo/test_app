@@ -16,6 +16,7 @@ export class CreateUserDialogComponent implements OnInit {
     private formB: FormBuilder,
     private userSrv: UserService
   ) { 
+    //user form for validation
     this.newUser = formB.group({
       'email': [null, Validators.compose([Validators.required, Validators.pattern('^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$'), Validators.nullValidator])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.nullValidator])],
@@ -25,6 +26,7 @@ export class CreateUserDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  //create user
   createUser(data,valid){
     console.log('admin',this.admin);
     if (this.admin){

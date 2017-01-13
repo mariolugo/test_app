@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     private formB: FormBuilder,
     public snackBar: MdSnackBar
   ) { 
+    //user form for validation
     this.loginForm = formB.group({
       'email': [null, Validators.compose([Validators.required, Validators.pattern('^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$'), Validators.nullValidator])],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.nullValidator])],
@@ -26,12 +27,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  //toast message
   openSnackBar(message) {
     this.snackBar.open(message,'CLOSE', {
       duration: 2000,
     })
   }
 
+  //do login
   login(value,valid){
     this.authService.login(value)
     .then(res=>{

@@ -15,7 +15,7 @@ export class Auth {
   ) {
     this.userData = new UserData();
   }
-
+  //login
   login(credentials) {
     return new Promise((resolve,reject)=>{
       this.http.post(`${this.config.baseUrl}auth/signin`,credentials)
@@ -32,7 +32,7 @@ export class Auth {
       })
     })
   }
-
+  //signUp
   signUp(credentials){
     return new Promise((resolve,reject)=>{
       this.http.post(`${this.config.baseUrl}auth/signup`,credentials)
@@ -48,11 +48,11 @@ export class Auth {
       })
     })
   }
-
+  //get user data that is saved on memory
   getUserData() {
     return this.userData;
   }
-
+  //set user data that saves in memory
   setUserData(data) {
     console.log('user data',data);
     this.userData.id = data.user.id;
@@ -61,6 +61,7 @@ export class Auth {
     this.userData.admin = data.user.admin;
   }
 
+  //logout
   logout() {
     // To log out, just remove the token and profile
     // from local storage
@@ -71,6 +72,7 @@ export class Auth {
     this.router.navigateByUrl('/home');
   }
 
+  //return true is token exists on localstorage
   isLoggedIn(){
     return window.localStorage.getItem('id_token');
   }

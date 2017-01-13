@@ -31,11 +31,13 @@ export class ProductCardsComponent implements OnInit {
 
   }
 
+  //sorting
   changeValue(newValue){
     console.log(newValue);
     this.valueSelected = newValue;
   }
 
+  //initializing asynchronous array
   ngOnInit() {
     this.productSrv.getProducts();
     this.products = this.productSrv.products;

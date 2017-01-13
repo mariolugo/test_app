@@ -9,7 +9,7 @@
     <textarea md-input placeholder="Description" formControlName="description"></textarea>
   </md-input-container>
   <small>* Password must be 6 characters minimum</small>
-  <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." formControlName="file"/>
+  <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." accept="image/*" formControlName="file"/>
 </form>
 </div>
 <div md-dialog-actions>

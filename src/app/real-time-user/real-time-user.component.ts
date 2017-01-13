@@ -16,6 +16,7 @@ export class RealTimeUserComponent implements OnInit {
   userHasPackage:any =false;
   constructor() { }
 
+  //socket listeners
   ngOnInit() {
     io.socket.on('infoReceived',(data)=>{
       this.adminReceived = true;
@@ -30,6 +31,7 @@ export class RealTimeUserComponent implements OnInit {
     })
   }
 
+  //send info to admin
   sendInfo(info){
     io.socket.request({
       method: 'POST',
@@ -49,6 +51,7 @@ export class RealTimeUserComponent implements OnInit {
     this.infoSent = true;
   }
 
+  //confirm package received
   confirmReceived(){
     io.socket.request({
       method: 'POST',

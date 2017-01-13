@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     // Send the user back to the dashboard after logout
     this.router.navigateByUrl('/login');
   }
-
+  //user data from auth service, data is stored
   getUserData():any{
     return this.authSrv.getUserData();
   }
