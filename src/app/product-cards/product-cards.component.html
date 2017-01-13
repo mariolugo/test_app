@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Product List</h1>
+</div>
+<div class="row" *ngIf="productList.length === 0">
+  <p class="noProducts">
+    There are no products, only admin can create products!
+  </p>
+</div>
+<div class="row filter-row" *ngIf="productList.length > 0">
+  <div class="col-md-6">
+    <div class="search-container">
+      <md-input-container>
+        <input md-input placeholder="Search product by title" [(ngModel)]="search">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="order-container">
+      <md-select placeholder="Order by" [(ngModel)]="valueSelected">
+        <md-option *ngFor="let option of orderOptions" [value]="option.value" onSelect="changeValue(option.value)">
+          {{ option.title }}
+        </md-option>
+      </md-select>
+    </div>
+  </div>
+</div>
+<div class="row product-row" *ngIf="productList.length > 0">
+  <div class="col-md-4" *ngFor="let product of productList | searchPipe:'title':search | orderBy : valueSelected; let i = index;">
+    <md-card class="card">
+      <md-card-header>
+        <div md-card-avatar>
+          <md-icon>person</md-icon>
+        </div>
+        <md-card-title>{{product.user.email}}</md-card-title>
+        <md-card-subtitle>{{product.createdAt | date:'mediumDate'}}</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image class="img" src="{{config.baseUrl}}{{product.photo}}">
+      <md-card-content>
+        <h1>
+          {{product.title}}
+        </h1>
+        <p>
+          {{product.description}}
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

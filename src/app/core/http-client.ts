@@ -1,19 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers,RequestOptions, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Auth } from '../services/auth.service';
 
 @Injectable()
 export class HttpClient {
     token;
     headers;
     options;
-    constructor(private http: Http) {
+    authSrv: Auth;
+    constructor(
+        private http: Http
+        ) {
         this.token = localStorage.getItem('id_token');
         this.headers = new Headers({ 'Authorization': 'JWT ' + this.token });
         this.options = new RequestOptions({ headers: this.headers });
     }
 
     get(url) {
+
         return this.http.get(url, {
             headers: this.headers
         });

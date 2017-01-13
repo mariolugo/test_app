@@ -46,7 +46,8 @@ export class ProductService {
   }
 
   uploadPhoto(file: Array<File>) {
-    let url = `${this.config.baseUrl}product/uploadPhoto/${window.localStorage.getItem('id_user')}`
+    let user = JSON.parse(window.localStorage.getItem('user'));
+    let url = `${this.config.baseUrl}product/uploadPhoto/${user.id}`
     return new Promise((resolve, reject) => {
       let formData: any = new FormData();
       let xhr = new XMLHttpRequest();
@@ -94,13 +95,16 @@ export class ProductService {
   }
 
   getProducts() {
-    this.http.get(`${this.config.baseUrl}product`)
+    this.http.get(`${this.config.baseUrl}product/allProducts`)
       .map(response => response.json())
       .subscribe(data => {
         console.log('data', data);
         this.dataStore.products = data;
         this._products.next(Object.assign({}, this.dataStore).products);
-      }, error => console.log('Could not load products.'));
+      }, error => {
+        window.location.reload();
+        console.log('Could not load products.')
+      });
   }
 
   deleteProduct(id) {

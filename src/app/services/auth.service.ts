@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient} from '../core/http-client';
 import { Config } from '../core/config';
+import { UserData } from '../core/user-data';
 
 @Injectable()
 export class Auth {
@@ -9,8 +10,10 @@ export class Auth {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private config:Config
+    private config:Config,
+    public userData: UserData
   ) {
+    this.userData = new UserData();
   }
 
   login(credentials) {
@@ -20,9 +23,8 @@ export class Auth {
       .subscribe(res=>{
         if(res.token){
           window.localStorage.setItem('id_token',res.token);
-          window.localStorage.setItem('id_user',res.user.id);
-          //window.localStorage.setItem('session',JSON.stringify(res.json().user));
-          //this.setUserData(res.json().user);
+          window.localStorage.setItem('user',JSON.stringify(res.user));
+          this.setUserData(res);
         }
         resolve(res);
       }, err =>{
@@ -37,6 +39,9 @@ export class Auth {
       .map(x => x.json())
       .subscribe(res=>{
         console.log('ress',res);
+        window.localStorage.setItem('id_token',res.token);
+        window.localStorage.setItem('user',JSON.stringify(res.user));
+        this.setUserData(res);
         resolve(res);
       }, err =>{
         reject(err.json());
@@ -44,18 +49,17 @@ export class Auth {
     })
   }
 
-  updateUser(data,id){
-    return new Promise((resolve,reject)=>{
-      this.http.put(`${this.config.baseUrl}user/${id}`,data)
-      .subscribe(res=>{
-        console.log('s',res.json());
-        resolve(res.json());
-      }, err =>{
-        reject(err);
-      })
-    })
+  getUserData() {
+    return this.userData;
   }
 
+  setUserData(data) {
+    console.log('user data',data);
+    this.userData.id = data.user.id;
+    this.userData.token = data.token;
+    this.userData.email = data.user.email;
+    this.userData.admin = data.user.admin;
+  }
 
   logout() {
     // To log out, just remove the token and profile

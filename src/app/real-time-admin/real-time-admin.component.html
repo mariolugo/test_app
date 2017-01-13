@@ -1,0 +1,33 @@
+<md-card class="example-card">
+  <md-card-header>
+    <md-card-title>Admin should receive info and send the package</md-card-title>
+  </md-card-header>
+  <md-card-content>
+
+    <div *ngIf="!sent && !adminReceived && !packageArrived && !packageReady">
+      <h3>Wating a package!</h3>
+      <md-spinner mode="indeterminate">
+      </md-spinner>
+    </div>
+
+    <div class="new-package" *ngIf="adminReceived && !packageReady">
+      <h3>{{packageName}} received</h3>
+    </div>
+
+    <h3 *ngIf="packageReady">Is package ready?</h3>
+
+    <div *ngIf="sent">
+      <h3>Package Sent!</h3>
+      <md-spinner mode="indeterminate">
+      </md-spinner>
+    </div>
+
+
+    <h3 *ngIf="packageArrived">Package delivered</h3>
+
+  </md-card-content>
+  <md-card-actions>
+    <button md-button (click)="infoReceived()" *ngIf="adminReceived">RECEIVED</button>
+    <button md-button (click)="sendPackage()" *ngIf="packageReady">SEND</button>
+  </md-card-actions>
+</md-card>

@@ -46,6 +46,11 @@ li>a {
     position: relative;
 }
 
+li>a.active{
+    background: #fafafa;
+    color: #00bcd4;
+}
+
 li>a:hover {
     background: #fafafa;
     color: #00bcd4;

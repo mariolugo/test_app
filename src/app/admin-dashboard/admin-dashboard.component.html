@@ -8,9 +8,6 @@
       <li>
         <a href="javascript:void(0);" (click)="value='products'" [ngClass]="{'active': value==='products'}">Products</a>
       </li>
-      <li>
-        <a href="javascript:void(0);" (click)="value='rt'" [ngClass]="{'active': value==='rt'}">Real Time</a>
-      </li>
     </ul>
   </md-sidenav>
   <div class="md-sidenav-content" [ngSwitch]="value">

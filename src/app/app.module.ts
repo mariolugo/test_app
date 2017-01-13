@@ -4,11 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { Auth } from './services/auth.service';
-import {AuthGuard} from './core/auth-guard.service';
+import { AuthGuard } from './core/auth-guard.service';
+import { AuthAdminGuard } from './core/auth-admin-guard.service';
 import { Config } from './core/config';
 import { HttpClient } from './core/http-client';
 import { routing,routedComponents } from './app.routes';
-import {UserData} from './core/user-data';
+import { UserData } from './core/user-data';
 import { UserService } from './services/user.service';
 import { ProductService } from './services/product.service';
 
@@ -28,6 +29,10 @@ import { CustomEmailFilterPipe } from './pipes/custom-email-filter.pipe';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { ProductPanelComponent } from './product-panel/product-panel.component';
 import { CreateProductDialogComponent } from './create-product-dialog/create-product-dialog.component';
+import { ProductCardsComponent } from './product-cards/product-cards.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { RealTimeUserComponent } from './real-time-user/real-time-user.component';
+import { RealTimeAdminComponent } from './real-time-admin/real-time-admin.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,11 @@ import { CreateProductDialogComponent } from './create-product-dialog/create-pro
     CustomEmailFilterPipe,
     EditUserDialogComponent,
     ProductPanelComponent,
-    CreateProductDialogComponent
+    CreateProductDialogComponent,
+    ProductCardsComponent,
+    OrderByPipe,
+    RealTimeUserComponent,
+    RealTimeAdminComponent
   ],
   entryComponents: [
     CreateUserDialogComponent,
@@ -69,7 +78,8 @@ import { CreateProductDialogComponent } from './create-product-dialog/create-pro
     Config,
     UserData,
     UserService,
-    ProductService
+    ProductService,
+    AuthAdminGuard
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

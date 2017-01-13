@@ -1,37 +1,37 @@
 export class User{
     id: string;
-    firstName: string;
-    lastName: string;
-    cellphone: string;
-    photo: string;
+    token: string;
     email: string;
+    admin: string;
 
     constructor()
     constructor(
         id: string,
-        firstName: string,
-        lastName: string,
-        cellphone: string,
-        photo: string,
-        email: string
+        token: string,
+        email: string,
+        admin: string
     )
     constructor(
         id?: string,
-        firstName?: string,
-        lastName?: string,
-        cellphone?: string,
-        photo?: string,
-        email?:string
+        token?: string,
+        email?:string,
+        admin?: string
     ) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cellphone = cellphone;
-        this.photo = photo;
+        this.token = token;
         this.email = email;
+        this.admin = admin;
     }
 
-    getfirstName() {
-        return this.firstName + " " + this.lastName;
+    isAdmin() {
+        return this.admin;
+    }
+
+    getEmail() {
+        return this.email;
+    }
+
+    getToken() {
+        return this.token;
     }
 }

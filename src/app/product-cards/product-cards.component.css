@@ -1,0 +1,64 @@
+.page-header{
+    margin:0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #FF9100;
+}
+
+.page-header h1{
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0;
+    padding: 50px;
+    color: white;
+}
+
+.filter-row{
+    margin: 50px 70px 10px 70px;
+}
+
+.product-row{
+    margin: 0px 70px 120px 70px;
+}
+
+.card {
+    width: 100%;
+    margin-top: 25px;
+}
+
+img.img {
+    position: relative;
+    overflow: hidden;
+    max-height: 215px;
+    
+}
+
+.img:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.example-header-image {
+  background-image: url('assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+md-input-container {
+    min-width: 200px;
+}
+
+md-select {
+    float: right;
+}
+
+.col-md-4 {
+    min-height: 410px;
+}

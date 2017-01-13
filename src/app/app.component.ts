@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Event as RouterEvent } from '@angular/router';
+import {Auth} from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +10,16 @@ import { Event as RouterEvent } from '@angular/router';
 export class AppComponent {
   title = 'app works!';
   constructor(
+    private authSrv: Auth,
     private router: Router
   ){
-
+    if (this.authSrv.isLoggedIn()){
+      let sessionData = {
+        token: window.localStorage.getItem('id_token'),
+        user: JSON.parse(window.localStorage.getItem('user'))
+      };
+      this.authSrv.setUserData(sessionData);
+    }
+    
   }
 }

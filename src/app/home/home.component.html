@@ -1,4 +1,17 @@
 <app-header></app-header>
-<p>
-  home works!
-</p>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" opened="true" class="admin-sidenav">
+    <ul>
+      <li>
+        <a href="javascript:void(0);" (click)="value='products'" [ngClass]="{'active': value==='products'}">Products</a>
+      </li>
+      <li>
+        <a href="javascript:void(0);" (click)="value='realtime'" [ngClass]="{'active': value==='realtime'}">Real Time Delivery</a>
+      </li>
+    </ul>
+  </md-sidenav>
+  <div class="md-sidenav-content" [ngSwitch]="value">
+    <app-product-cards *ngSwitchCase="'products'"></app-product-cards>
+    <app-real-time *ngSwitchCase="'realtime'"></app-real-time>
+  </div>
+</md-sidenav-container>
